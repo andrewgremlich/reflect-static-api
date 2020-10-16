@@ -1,10 +1,19 @@
+{{ $circuitId := .Params.id }}
+
 {
     "name": "{{ .Title }}",
     "description" : "{{ .Params.description }}",
     "link": "{{ .Permalink }}",
     "movements": [
-        {{ range (where .Site.RegularPages ".Params.foreignid" "eq" .Params.id) }}
-            "{{ . }}"
+        {{ range $index, $e := ( where .Site.RegularPages ".Params.foreignid" "intersect" $circuitId ) }}
+            {{ if $index }}, {{ end }}
+            {
+                "name": "{{ .Title }}",
+                "description" : "{{ .Params.description }}",
+                "link": "{{ .Permalink }}",
+                "image": "{{ .Params.image }}"
+            }
         {{ end }}
     ]
 }
+
