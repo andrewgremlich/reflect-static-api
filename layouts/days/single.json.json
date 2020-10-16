@@ -2,5 +2,9 @@
     "name": "{{ .Title }}",
     "description" : "{{ .Params.description }}",
     "link": "{{ .Permalink }}",
-    "movements": []
+    "movements": [
+        {{ range (where .Site.RegularPages ".Params.foreignid" "eq" .Params.id) }}
+            "{{ . }}"
+        {{ end }}
+    ]
 }
