@@ -6,5 +6,5 @@ image: "/images/running.gif"
 draft: true
 difficulty: 16
 
-circuits: ["five-circuit-three"]
+foreignId: "5-3"
 ---
