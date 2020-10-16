@@ -1,0 +1,5 @@
+{{ $imageFilePath := .Get "filepath" }}
+
+{{ $original := .Page.Resources.GetMatch (printf "*%s*" $imageFilePath) }}
+
+{{ printf $original.RelPermalink }}

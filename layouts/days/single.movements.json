@@ -1,0 +1,12 @@
+{{ define "response" }}
+{{- $exercises := where (where .Site.RegularPages "Type" "movements") "Params.circuits" .Params.uniqueID -}}
+    {
+        "team" : "{{ .Title }}",
+        "count" : "{{ len $exercises }}"
+        ,"players" : [
+        {{ range $index, $e := $exercises }}
+            {{ if $index }}, {{ end }}{{ .Render "item" }}
+        {{ end }}
+        ]
+    }
+{{ end }}

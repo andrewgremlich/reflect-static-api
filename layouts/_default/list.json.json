@@ -1,0 +1,22 @@
+{{ define "response" }}
+
+{
+    {{ with eq .Kind "section" }}
+        "section": "{{ . }}",
+    {{ end }}  
+    
+    {{ with eq .Kind "taxonomy" }}
+        "taxonomy" : "{{ $.Data.Singular }}",
+        "term" : "{{ $.Data.Term }}",
+    {{ end }}
+
+    "count" : "{{ len .Data.Pages }}",  
+    "items": [
+        {{ range $index, $e := .Data.Pages }}
+            {{ if $index }}, {{ end }}{{ .Render "single" }}
+        {{ end }}
+    ]
+}
+
+
+{{ end }}

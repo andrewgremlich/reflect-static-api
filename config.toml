@@ -1,0 +1,15 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Reflect Static API"
+
+[taxonomies]
+day="days"
+
+[outputFormats.movements]
+baseName="movements"
+mediaType="application/json"
+
+[outputs]
+page=["json", "movements"]
+section=["json", "movements"]
+home=["json", "movements"]
